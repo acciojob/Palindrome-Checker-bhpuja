@@ -1,16 +1,49 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-   </script>
+    <h2>Palindrome Checker</h2>
+    
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString" placeholder="Enter text">
+    <button onclick="checkPalindrome()">Check</button>
 
+    <div id="result"></div>
+
+    <script>
+        function checkPalindrome() {
+            const input = document.getElementById("inputString").value;
+
+            // Normalize the string (remove non-alphanumeric characters and convert to lowercase)
+            const normalizedString = input.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            
+            // Check if the normalized string is equal to its reverse
+            const reversedString = normalizedString.split('').reverse().join('');
+            
+            // Display the result
+            const result = document.getElementById("result");
+            if (normalizedString === reversedString) {
+                result.textContent = `"${input}" is a palindrome.`;
+                result.style.color = "green";
+            } else {
+                result.textContent = `"${input}" is not a palindrome.`;
+                result.style.color = "red";
+            }
+        }
+    </script>
 </body>
-
 </html>
